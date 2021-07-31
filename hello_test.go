@@ -3,19 +3,25 @@ package main
 import "testing"
 
 func TestHello(t *testing.T) {
-	got := hello("welt")
-	want := "hello, welt"
 
-	if got != want {
-		t.Errorf("got %q want %q", got, want)
-	}
-}
+	//using subtests here
+	t.Run("customarily hello world", func(t *testing.T) {
+		got := hello("welt")
+		want := "Hello welt"
 
-func TestHello2(t *testing.T) {
-	got := hello("Chris")
-	want := "hello, Chris"
+		if got != want {
+			t.Errorf("got %q want %q", got, want)
+		}
+	})
 
-	if got != want {
-		t.Errorf("got %q want %q", got, want)
-	}
+	t.Run("say hello to people", func(t *testing.T) {
+
+		got := hello("welt")
+		want := "Hello welt"
+
+		if got != want {
+			t.Errorf("got %q want %q", got, want)
+		}
+	})
+
 }

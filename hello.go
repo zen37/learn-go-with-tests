@@ -11,17 +11,31 @@ sometimes to aid performance.
 */
 
 const enHelloPrefix = "Hello "
+const deHelloPrefix = "Hallo "
 const enHelloSuffix = "world"
 
-func hello(name string) string {
+func hello(name string, language string) string {
 
 	if name == "" {
 		name = enHelloSuffix
 	}
-	return enHelloPrefix + name
 
+	return greetingPrefix(language) + name
+}
+
+func greetingPrefix(language string) (prefix string) {
+
+	switch language {
+	case "EN":
+		prefix = enHelloPrefix
+	case "DE":
+		prefix = deHelloPrefix
+	default:
+		prefix = enHelloPrefix
+	}
+	return
 }
 
 func main() {
-	fmt.Println(hello("world"))
+	fmt.Println(hello("world", "EN"))
 }

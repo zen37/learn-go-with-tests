@@ -23,21 +23,27 @@ func TestHello(t *testing.T) {
 
 	//using subtests here
 	t.Run("customarily hello world", func(t *testing.T) {
-		got := hello("welt")
-		want := "Hello welt"
+		got := hello("world", "EN")
+		want := "Hello world"
 		assertMessage(t, got, want)
 	})
 
 	t.Run("say hello to people", func(t *testing.T) {
 
-		got := hello("Ann")
+		got := hello("Ann", "EN")
 		want := "Hello Ann"
 		assertMessage(t, got, want)
 	})
 
 	t.Run("use default 'world' if no parameter is supplied", func(t *testing.T) {
-		got := hello("")
+		got := hello("", "EN")
 		want := "Hello world"
+		assertMessage(t, got, want)
+	})
+
+	t.Run("if language is German return Hallo instead of Hello", func(t *testing.T) {
+		got := hello("Gerd", "DE")
+		want := "Hallo Gerd"
 		assertMessage(t, got, want)
 	})
 }

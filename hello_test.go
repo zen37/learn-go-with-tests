@@ -34,4 +34,10 @@ func TestHello(t *testing.T) {
 		want := "Hello Ann"
 		assertMessage(t, got, want)
 	})
+
+	t.Run("use default 'world' if no parameter is supplied", func(t *testing.T) {
+		got := hello("")
+		want := "Hello world"
+		assertMessage(t, got, want)
+	})
 }

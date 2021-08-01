@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
 Constants should improve performance of your application as it saves you
 creating the "Hello, " string instance every time Hello is called.
@@ -9,14 +11,17 @@ sometimes to aid performance.
 */
 
 const enHelloPrefix = "Hello "
+const enHelloSuffix = "world"
 
 func hello(name string) string {
-	//return "hello, " + name
 
+	if name == "" {
+		name = enHelloSuffix
+	}
 	return enHelloPrefix + name
 
 }
 
 func main() {
-	hello("world")
+	fmt.Println(hello("world"))
 }
